@@ -4,7 +4,7 @@ import requests
 import json
 import helper
 from datetime import datetime
-from flask import Flask, escape, request
+from flask import Flask, escape, request, jsonify
 
 app = Flask(__name__)
 
@@ -14,7 +14,7 @@ def home():
 
 @app.route('/candlestick-patterns/<symbol>/<interval>')
 def candlestick(symbol, interval):
-    return json.dumps(helper.runner(symbol, interval))
+    return jsonify(helper.runner(symbol, interval))
 
 
 if __name__ == '__main__':
